@@ -1,0 +1,7 @@
+opcion de ver/ocultar clave
+quitar espacios
+validacion con clic/enter
+mensajes para el usuario
+uso de captcha
+limite de intentos fallidos
+olvido de clave
