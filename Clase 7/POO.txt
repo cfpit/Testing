@@ -1,0 +1,30 @@
+POO
+clases
+	--> representan a entidades de la vida real
+	por ej.: perro, producto, persona, auto, servicio, etc.
+
+clases
+	--> atributos
+	--> metodos
+
+clase Perro (PascalCase)
+	--> atributos: raza, colorDePelo, nombre, edad (camelCase)
+	--> metodos: ladrar, correr, morder (camelCase)
+
+clase Auto 
+	--> atributos: marca, velocidad, kilometraje, cilindrada 
+	--> metodos: acelerar, frenar, chocar, arrancar
+
+clase CajaDeAhorro 
+	--> atributos: saldo, moneda, cbu 
+	--> metodos: extraer, depositar, transferir, informarUltimosMovimientos
+
+Objeto: es un ejemplar (una instancia) de una clase
+Todos los objetos pertenecen a una clase
+
+Estado de un objeto: el conjunto de valores de los atributos q tiene un objeto
+en un momento dado.
+
+Comportamiento de un objeto: es el conjunto de metodos que ejecuta
+
+El estado de un objeto DEBE cambiar a traves del comportamiento
