@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "8e475ee8-c603-4772-967c-e17163df8a55",
+		"name": "Biblioteca API Collection",
+		"description": "Colección completa de endpoints de la API de Biblioteca con operaciones CRUD para Categorías, Personas y Libros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39037753"
+	},
+	"item": [
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Get All Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categoria",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria"
+							]
+						},
+						"description": "Obtiene todas las categorías disponibles"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categoria by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categoria/10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria",
+								"10"
+							]
+						},
+						"description": "Obtiene una categoría específica por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"ficción\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categoria",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria"
+							]
+						},
+						"description": "Crea una nueva categoría"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categoria/17",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria",
+								"17"
+							]
+						},
+						"description": "Elimina una categoría (solo si no tiene libros asociados)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestión de categorías"
+		},
+		{
+			"name": "Persona",
+			"item": [
+				{
+					"name": "Get All Personas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/persona",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona"
+							]
+						},
+						"description": "Obtiene todas las personas registradas"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Persona by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/persona/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona",
+								"1"
+							]
+						},
+						"description": "Obtiene una persona específica por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Persona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Pedro\",\n  \"apellido\": \"Picapiedra\",\n  \"alias\": \"pedrop\",\n  \"email\": \"pedro.picapiedra@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/persona",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona"
+							]
+						},
+						"description": "Registra una nueva persona"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Persona",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Carlos\",\n  \"apellido\": \"Pérez\",\n  \"alias\": \"juanp\",\n  \"email\": \"juan.carlos.perez@email.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/persona/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona",
+								"1"
+							]
+						},
+						"description": "Actualiza los datos de una persona existente"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Persona",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/persona/6",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"persona",
+								"6"
+							]
+						},
+						"description": "Elimina una persona (solo si no tiene libros asociados)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestión de personas"
+		},
+		{
+			"name": "Libro",
+			"item": [
+				{
+					"name": "Get All Libros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/libro",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro"
+							]
+						},
+						"description": "Obtiene todos los libros registrados"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Libro by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/libro/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro",
+								"1"
+							]
+						},
+						"description": "Obtiene un libro específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Libro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Don Quijote de la Mancha\",\n  \"descripcion\": \"Obra clásica de la literatura española\",\n  \"categoria_id\": 10,\n  \"persona_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/libro",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro"
+							]
+						},
+						"description": "Registra un nuevo libro"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Libro Descripcion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descripcion\": \"Nueva descripción del libro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/libro/5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro",
+								"5"
+							]
+						},
+						"description": "Actualiza solo la descripción de un libro"
+					},
+					"response": []
+				},
+				{
+					"name": "Prestar Libro",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"persona_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/libro/prestar/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro",
+								"prestar",
+								"9"
+							]
+						},
+						"description": "Presta un libro a una persona específica"
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver Libro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/libro/devolver/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro",
+								"devolver",
+								"1"
+							]
+						},
+						"description": "Devuelve un libro prestado (establece persona_id en null)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Libro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/libro/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"libro",
+								"9"
+							]
+						},
+						"description": "Elimina un libro (solo si no está prestado)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestión de libros"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
