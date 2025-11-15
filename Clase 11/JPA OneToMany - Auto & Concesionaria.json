@@ -1,0 +1,631 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-123456789abc",
+		"name": "Testing Completo Postman JPA 1aN",
+		"description": "Colección completa para testing de relaciones JPA 1:N - Proyecto: proyectojpa1an - Entidades: Concesionaria (1) ←→ Auto (N)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345"
+	},
+	"item": [
+		{
+			"name": "🏢 CONCESIONARIAS",
+			"item": [
+				{
+					"name": "📋 Listar todas las concesionarias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias"
+							]
+						},
+						"description": "Obtiene todas las concesionarias con sus autos (gracias a @JsonManagedReference)"
+					},
+					"response": []
+				},
+				{
+					"name": "🔍 Obtener concesionaria por ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 404\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 404]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/{{concesionariaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"{{concesionariaId}}"
+							]
+						},
+						"description": "Obtiene una concesionaria específica por ID"
+					},
+					"response": []
+				},
+				{
+					"name": "✨ Crear nueva concesionaria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Toyota Centro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias"
+							]
+						},
+						"description": "Crea una nueva concesionaria - solo 'nombre' es requerido"
+					},
+					"response": []
+				},
+				{
+					"name": "📝 Actualizar concesionaria (PATCH)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200, 400, or 404\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 400, 404]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Toyota Centro Actualizado\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/{{concesionariaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"{{concesionariaId}}"
+							]
+						},
+						"description": "Actualización parcial de concesionaria - método PATCH semánticamente correcto"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Eliminar concesionaria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/{{concesionariaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"{{concesionariaId}}"
+							]
+						},
+						"description": "CUIDADO: Elimina concesionaria y TODOS sus autos (CASCADE)"
+					},
+					"response": []
+				},
+				{
+					"name": "🚗➕ Crear auto para concesionaria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 or 404\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 404]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Corolla\",\n    \"precio\": 25000.50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/{{concesionariaId}}/autos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"{{concesionariaId}}",
+								"autos"
+							]
+						},
+						"description": "Endpoint optimizado - NO incluir 'concesionaria' en JSON"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestión de Concesionarias"
+		},
+		{
+			"name": "🚗 AUTOS",
+			"item": [
+				{
+					"name": "📋 Listar todos los autos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/autos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos"
+							]
+						},
+						"description": "Lista autos SIN concesionaria (gracias a @JsonBackReference)"
+					},
+					"response": []
+				},
+				{
+					"name": "🔍 Obtener auto por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/autos/{{autoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos",
+								"{{autoId}}"
+							]
+						},
+						"description": "Obtiene auto específico SIN mostrar concesionaria"
+					},
+					"response": []
+				},
+				{
+					"name": "✨ Crear auto (tradicional)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Camry\",\n    \"precio\": 35000.75,\n    \"concesionaria\": {\n        \"id\": {{concesionariaId}}\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/autos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos"
+							]
+						},
+						"description": "Método tradicional - requiere especificar concesionaria manualmente"
+					},
+					"response": []
+				},
+				{
+					"name": "📝 Actualizar auto (PATCH)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200, 400, or 500\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 400, 500]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Corolla Híbrido\",\n    \"precio\": 28000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/autos/{{autoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos",
+								"{{autoId}}"
+							]
+						},
+						"description": "Actualización parcial - al menos un campo (marca o precio) requerido"
+					},
+					"response": []
+				},
+				{
+					"name": "🗑️ Eliminar auto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/autos/{{autoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos",
+								"{{autoId}}"
+							]
+						},
+						"description": "Elimina solo el auto, concesionaria permanece"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gestión de Autos"
+		},
+		{
+			"name": "🧪 TESTS DE VALIDACIÓN",
+			"item": [
+				{
+					"name": "❌ Error - Concesionaria inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Auto Inexistente\",\n    \"precio\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/999/autos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"999",
+								"autos"
+							]
+						},
+						"description": "Test: Intentar crear auto en concesionaria que no existe"
+					},
+					"response": []
+				},
+				{
+					"name": "❌ PATCH vacío - Concesionaria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/concesionarias/{{concesionariaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"concesionarias",
+								"{{concesionariaId}}"
+							]
+						},
+						"description": "Test: PATCH sin campos para actualizar"
+					},
+					"response": []
+				},
+				{
+					"name": "✅ PATCH solo precio - Auto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"precio\": 35000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/autos/{{autoId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"autos",
+								"{{autoId}}"
+							]
+						},
+						"description": "Test exitoso: Actualizar solo precio, preserva marca"
+					},
+					"response": []
+				}
+			],
+			"description": "Casos de prueba para validaciones y errores"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log('🚀 Ejecutando: ' + pm.info.requestName);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test('Response time < 2000ms', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"",
+					"console.log('✅ Status: ' + pm.response.code + ' | Time: ' + pm.response.responseTime + 'ms');"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "concesionariaId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "autoId",
+			"value": "1", 
+			"type": "string"
+		}
+	]
+}
