@@ -1,0 +1,8 @@
+Selenium para la automatización de pruebas web, 
+JMeter para pruebas de carga, 
+Postman para pruebas de APIs, 
+Jira para gestión de defectos y casos de prueba u OpenProject/Trello(gratis)
+Appium para aplicaciones móviles. 
+Cypress y Playwright para automatización web moderna, 
+SoapUI para pruebas de servicios web
+Docker para la gestión de entornos de prueba
