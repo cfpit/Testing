@@ -1,0 +1,37 @@
+
+Java
+	--> JDK: kit de desarrollo java
+		java.sun.com --> JDK 25 LTS
+
+	--> IDE: entorno de desarrollo integrado
+		--> Apache Netbeans
+		--> Eclipse
+		--> Visual Studio Code
+		--> Intelli J Idea
+
+-----------------------------------------
+
+App
+	--> paquetes
+			--> clases 	--> atributos
+						--> metodos
+
+---------------------------------------
+POO 
+	--> todo se puede representar por un objeto
+	--> todo objeto pertenece a una clase
+
+	clase Auto
+		--> atributos: marca, modelo, tipoDeMotor, color
+		--> metodos: acelerar, frenar, arrancar, chocar
+
+	clase CajaDeAhorro
+		--> atributos: saldo, cbu, moneda
+		--> metodos: depositar, extraer, transferir,
+					informarUltimosMovimientos
+
+
+
+
+
+
