@@ -1,0 +1,15 @@
+
+1) JDK --> java.sun.com
+2) IDE 
+	--> Apache Netbeans
+	--> Intelli J Idea
+	--> Eclipse
+	--> Visual Studio Code
+
+3) Configurar variables de entorno
+
+	JAVA_HOME
+	Path --> %JAVA_HOME%\bin
+
+	Ruta similar a -> 	 C:\Program Files\Java\jdk-21
+
