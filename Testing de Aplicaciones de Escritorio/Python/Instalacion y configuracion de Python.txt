@@ -1,0 +1,16 @@
+Instalacion
+https://www.python.org/downloads/
+https://www.python.org/downloads/release/pymanager-261/
+
+Agregar al Path de la variable de entorno
+C:\Users\smata\AppData\Local\Programs\Python\Python312
+
+Verificar instalacion y version de Python
+python --version
+
+Forma de Ejecutar Prueba(ubicado en el directorio del archivo a probar)
+python sumar.py 10 5    
+        
+(ubicado en cualquier directorio)        
+python -c "print('Hola')"  
+
